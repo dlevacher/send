@@ -263,6 +263,21 @@ const conf = convict({
     default: '',
     env: 'CUSTOM_FOOTER_URL'
   },
+  custom_completed_button: {
+    format: Boolean,
+    default: true,
+    env: 'CUSTOM_COMPLETED_BUTTON'
+  },
+  custom_completed_link: {
+    format: String,
+    default: '/',
+    env: 'CUSTOM_COMPLETED_LINK'
+  },
+  custom_completed_description: {
+    format: String,
+    default: '',
+    env: 'CUSTOM_COMPLETED_DESCRIPTION'
+  },
   ui_color_primary: {
     format: String,
     default: '#0a84ff',

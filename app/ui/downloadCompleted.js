@@ -3,6 +3,15 @@ const assets = require('../../common/assets');
 
 module.exports = function(state) {
   const btnText = state.user.loggedIn ? 'okButton' : 'sendYourFilesLink';
+  const ok = ((WEB_UI.CUSTOM_COMPLETED_BUTTON) ? html`
+    <p class="my-5">
+      <a href="${WEB_UI.CUSTOM_COMPLETED_LINK}" class="btn rounded-lg flex items-center mt-4" role="button"
+        >${state.translate(btnText)}</a
+      >
+    </p>
+  ` : null);
+  
+  const description = (WEB_UI.CUSTOM_COMPLETED_DESCRIPTION != '') ? WEB_UI.CUSTOM_COMPLETED_DESCRIPTION : state.translate('trySendDescription');
   return html`
     <div
       id="download-complete"
@@ -20,13 +29,9 @@ module.exports = function(state) {
           ? 'hidden'
           : ''}"
       >
-        ${state.translate('trySendDescription')}
+        ${description}
       </p>
-      <p class="my-5">
-        <a href="/" class="btn rounded-lg flex items-center mt-4" role="button"
-          >${state.translate(btnText)}</a
-        >
-      </p>
+      ${ok}
     </div>
   `;
 };
